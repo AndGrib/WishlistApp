@@ -1,0 +1,13 @@
+{% extends "wishes/base.html" %}
+
+{% block title %}Спасибо!{% endblock %}
+{% block card_class %}thanks{% endblock %}
+
+{% block content %}
+    <div class="emoji">🎅</div>
+    <h1>Ваши пожелания отправлены Деду Морозу!</h1>
+    <p class="subtitle">Хо-хо-хо! С Новым годом! 🎄</p>
+    <a class="link-back" href="{% url 'wishlist_form' %}">Заполнить ещё один список</a>
+        <br>
+    <a class="link-back" href="{% url 'all_wishlists' %}">Посмотреть, что хотят другие 👀</a>
+{% endblock %}

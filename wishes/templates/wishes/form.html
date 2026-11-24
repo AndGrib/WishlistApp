@@ -1,0 +1,24 @@
+{% extends "wishes/base.html" %}
+
+{% block content %}
+    <h1>🎄 Новогодний список желаний</h1>
+    <p class="subtitle">Напишите своё имя и до 5 подарков, которые хотели бы получить.</p>
+
+    <form method="post">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        {{ formset.management_form }}
+        {{ formset.non_form_errors }}
+
+        {% for gift_form in formset %}
+            <fieldset>
+                <legend>🎁 Подарок {{ forloop.counter }}</legend>
+                {{ gift_form.as_p }}
+            </fieldset>
+        {% endfor %}
+
+        <button type="submit">Отправить Деду Морозу</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,241 @@
+/* ---------- Colors and sizes in one place ---------- */
+:root {
+    --green-dark: #0B3D2E;
+    --blue-night: #0A1F3C;
+    --red: #C8102E;
+    --red-light: #E63946;
+    --gold: #F4C542;
+    --snow: #F8F9FA;
+    --glass: rgba(255, 255, 255, 0.10);
+    --glass-border: rgba(255, 255, 255, 0.18);
+    --radius-card: 16px;
+    --radius-control: 8px;
+}
+
+* { box-sizing: border-box; }
+
+/* ---------- Page background ---------- */
+body {
+    margin: 0;
+    min-height: 100vh;
+    padding: 48px 16px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    font-family: "Segoe UI Variable", "Segoe UI", system-ui, sans-serif;
+    color: var(--snow);
+    background:
+        radial-gradient(circle at 15% 10%, rgba(244, 197, 66, 0.18), transparent 40%),
+        radial-gradient(circle at 85% 90%, rgba(200, 16, 46, 0.25), transparent 45%),
+        linear-gradient(135deg, var(--green-dark), var(--blue-night));
+    background-attachment: fixed;
+}
+
+/* ---------- Frosted-glass card (Fluent "acrylic") ---------- */
+.card {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 760px;
+    padding: 32px;
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-card);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+}
+
+h1 { margin: 0 0 8px; font-size: 28px; font-weight: 600; }
+.subtitle { margin: 0 0 24px; opacity: 0.8; }
+
+/* ---------- Form fields ---------- */
+form p { margin: 0 0 16px; }
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 14px;
+    opacity: 0.85;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="url"] {
+    width: 100%;
+    padding: 10px 12px;
+    font: inherit;
+    color: var(--snow);
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-control);
+    outline: none;
+    transition: border-color 0.2s, background 0.2s;
+}
+
+input:focus {
+    border-color: var(--gold);
+    background: rgba(255, 255, 255, 0.14);
+}
+
+/* ---------- One gift = one rounded block, 3 fields in a row ---------- */
+fieldset {
+    display: grid;
+    grid-template-columns: 2fr 1fr 2fr;
+    gap: 12px;
+    margin: 0 0 16px;
+    padding: 16px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+}
+
+fieldset p { margin: 0; }
+
+legend {
+    padding: 0 8px;
+    color: var(--gold);
+    font-weight: 600;
+}
+
+/* ---------- Error messages ---------- */
+.errorlist {
+    list-style: none;
+    margin: 0 0 6px;
+    padding: 0;
+    color: #FFB4B4;
+    font-size: 13px;
+}
+
+/* ---------- Red gradient button ---------- */
+button {
+    width: 100%;
+    padding: 14px;
+    font: inherit;
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+    background: linear-gradient(135deg, var(--red), var(--red-light));
+    border: none;
+    border-radius: var(--radius-control);
+    box-shadow: 0 4px 16px rgba(200, 16, 46, 0.4);
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s;
+}
+
+button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(200, 16, 46, 0.55);
+}
+
+/* ---------- Thank-you page "pop-up" ---------- */
+.thanks {
+    max-width: 520px;
+    margin-top: 10vh;
+    text-align: center;
+    animation: pop 0.5s ease-out;
+}
+
+.thanks .emoji { font-size: 64px; margin-bottom: 8px; }
+
+.link-back {
+    display: inline-block;
+    margin-top: 8px;
+    color: var(--gold);
+    text-decoration: none;
+}
+
+.link-back:hover { text-decoration: underline; }
+
+@keyframes pop {
+    from { opacity: 0; transform: scale(0.9) translateY(10px); }
+    to   { opacity: 1; transform: none; }
+}
+
+/* ---------- Falling snow ---------- */
+.snow span {
+    position: fixed;
+    top: -5%;
+    z-index: 0;
+    color: white;
+    opacity: 0.6;
+    pointer-events: none;
+    animation: fall linear infinite;
+}
+
+.snow span:nth-child(1) { left: 5%;  font-size: 18px; animation-duration: 12s; animation-delay: 0s; }
+.snow span:nth-child(2) { left: 18%; font-size: 12px; animation-duration: 9s;  animation-delay: 3s; }
+.snow span:nth-child(3) { left: 30%; font-size: 22px; animation-duration: 14s; animation-delay: 1s; }
+.snow span:nth-child(4) { left: 45%; font-size: 14px; animation-duration: 10s; animation-delay: 5s; }
+.snow span:nth-child(5) { left: 58%; font-size: 20px; animation-duration: 13s; animation-delay: 2s; }
+.snow span:nth-child(6) { left: 70%; font-size: 12px; animation-duration: 8s;  animation-delay: 4s; }
+.snow span:nth-child(7) { left: 82%; font-size: 24px; animation-duration: 15s; animation-delay: 6s; }
+.snow span:nth-child(8) { left: 93%; font-size: 16px; animation-duration: 11s; animation-delay: 2s; }
+
+@keyframes fall {
+    to { transform: translateY(110vh) rotate(360deg); }
+}
+
+/* ---------- Phones: gift fields stacked instead of in a row ---------- */
+@media (max-width: 600px) {
+    body { padding: 24px 12px; }
+    .card { padding: 20px; }
+    fieldset { grid-template-columns: 1fr; }
+}
+
+/* ---------- Lists page ---------- */
+.person {
+    margin-bottom: 12px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.person summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 16px;
+    font-weight: 600;
+    cursor: pointer;
+    list-style: none;
+    transition: background 0.2s;
+}
+
+.person summary::-webkit-details-marker { display: none; }
+.person summary:hover { background: rgba(255, 255, 255, 0.06); }
+.person[open] summary { color: var(--gold); }
+
+.count {
+    min-width: 28px;
+    padding: 2px 10px;
+    font-size: 13px;
+    text-align: center;
+    color: white;
+    background: linear-gradient(135deg, var(--red), var(--red-light));
+    border-radius: 999px;
+}
+
+.gift-list {
+    list-style: none;
+    margin: 0;
+    padding: 0 16px 12px;
+}
+
+.gift-list li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 0;
+    border-top: 1px solid var(--glass-border);
+}
+
+.gift-name { flex: 1; }
+.gift-price { opacity: 0.8; white-space: nowrap; }
+
+.gift-list a {
+    color: var(--gold);
+    text-decoration: none;
+    white-space: nowrap;
+}
